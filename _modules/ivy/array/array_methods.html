@@ -5396,6 +5396,25 @@
 <span class="sd">    This method simply wraps the function, and so the docstring for</span>
 <span class="sd">    ivy.matrix_norm also applies to this method with minimal changes.</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x</span>
+<span class="sd">        Input array.</span>
+<span class="sd">    ord</span>
+<span class="sd">        Order of the norm. Default is &quot;fro&quot;.</span>
+<span class="sd">    keepdims</span>
+<span class="sd">        If this is set to True, the axes which are normed over are left in</span>
+<span class="sd">        the result as dimensions with size one. With this option the result will</span>
+<span class="sd">        broadcast correctly against the original x. Default is False.</span>
+<span class="sd">    out</span>
+<span class="sd">        optional output array, for writing the result to. It must have a shape</span>
+<span class="sd">        that the inputs broadcast to.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        Matrix norm of the array at specified axes.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([[1.1, 2.2, 3.3], [1.0, 2.0, 3.0]])</span>
