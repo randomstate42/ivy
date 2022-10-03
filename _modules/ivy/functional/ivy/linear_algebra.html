@@ -1075,38 +1075,37 @@
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    With :class:&#39;ivy.Array&#39; inputs:</span>
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 2], [3, 4]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1., 2.], [3., 4.]])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.matrix_norm(x)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array(5.47722558)</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[1, 2], [3, 4]], \</span>
-<span class="sd">                    [[5, 6], [7, 8]]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[1., 2.], [3., 4.]], \</span>
+<span class="sd">                    [[5., 6.], [7., 8.]]])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.zeros(2)</span>
 <span class="sd">    &gt;&gt;&gt; ivy.matrix_norm(x, ord=1, out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array([ 6., 14.])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 2, 3], \</span>
-<span class="sd">                       [4, 5, 6], \</span>
-<span class="sd">                       [7, 8, 9]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1., 2., 3.], \</span>
+<span class="sd">                       [4., 5., 6.], \</span>
+<span class="sd">                       [7., 8., 9.]])</span>
 <span class="sd">    &gt;&gt;&gt; ivy.matrix_norm(x, ord=float(&#39;inf&#39;), keepdims=True, out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    ivy.array([[24.]])</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([[1.1, 2.2], [3.3, 4.4], [5.5, 6.6]])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.matrix_norm(x, ord=&#39;nuc&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.matrix_norm(x, ord=&#39;nuc&#39;, keepdims=True)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array(11.043801)</span>
+<span class="sd">    ivy.array([[11.]])</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([[[1.1, 2.2], [3.3, 4.4]], \</span>
-<span class="sd">    ...                [[1, 0], [1, 1]]])   </span>
-<span class="sd">    &gt;&gt;&gt; ivy.matrix_norm(x, ord=&#39;fro&#39;, keepdims=True, out=x)</span>
-<span class="sd">    ivy.array([[[6.02]],</span>
+<span class="sd">                        [[1., 0.], [1., 1.]]])   </span>
+<span class="sd">    &gt;&gt;&gt; ivy.matrix_norm(x, ord=&#39;fro&#39;, out=x)</span>
+<span class="sd">    &gt;&gt;&gt; print(x)</span>
+<span class="sd">    ivy.array([6.02, 1.73])</span>
 
-<span class="sd">        [[1.73]]])</span>
-
-<span class="sd">    With :class:&#39;ivy.Array&#39; input:</span>
+<span class="sd">    With :class:&#39;ivy.Container&#39; input:</span>
 <span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0.666, 9.11], \</span>
 <span class="sd">                                       [42.69, 9.23]]), \</span>
 <span class="sd">                          b=ivy.array([[1.1, 2.2, 3.3], \</span>
