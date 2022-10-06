@@ -956,7 +956,7 @@
 <span class="sd">        x</span>
 <span class="sd">            Input array.</span>
 <span class="sd">        ord</span>
-<span class="sd">            Order of the norm. Default is 2.</span>
+<span class="sd">            Order of the norm. Default is &quot;fro&quot;.</span>
 <span class="sd">        keepdims</span>
 <span class="sd">            If this is set to True, the axes which are normed over are left in the</span>
 <span class="sd">            result as dimensions with size one. With this option the result will</span>
@@ -980,6 +980,28 @@
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Matrix norm of the array at specified axes.</span>
+<span class="sd">        </span>
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1.1, 2.2], [1., 2.]]), \</span>
+<span class="sd">                              b=ivy.array([[1., 2.], [3., 4.]]))</span>
+<span class="sd">        &gt;&gt;&gt; y = ivy.Container.static_matrix_norm(x, ord=1)</span>
+<span class="sd">        &gt;&gt;&gt; print(y)</span>
+<span class="sd">        {</span>
+<span class="sd">            a: ivy.array(4.2),</span>
+<span class="sd">            b: ivy.array(6.)</span>
+<span class="sd">        }</span>
+
+<span class="sd">        &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1.1, 2.2], [1., 2.]]), \</span>
+<span class="sd">                              b=ivy.array([[1., 2.], [3., 4.]]))</span>
+<span class="sd">        &gt;&gt;&gt; ord = ivy.Container(a=1, b=float(&#39;inf&#39;))</span>
+<span class="sd">        &gt;&gt;&gt; k = ivy.Container(a=True, b=False)</span>
+<span class="sd">        &gt;&gt;&gt; y = ivy.Container.static_matrix_norm(x, ord=ord, keepdims=k)</span>
+<span class="sd">        &gt;&gt;&gt; print(y)</span>
+<span class="sd">        {</span>
+<span class="sd">            a: ivy.array([[4.2]]),</span>
+<span class="sd">            b: ivy.array(7.)</span>
+<span class="sd">        }</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">ContainerBase</span><span class="o">.</span><span class="n">multi_map_in_static_method</span><span class="p">(</span>
@@ -1018,7 +1040,7 @@
 <span class="sd">        self</span>
 <span class="sd">            Input array.</span>
 <span class="sd">        ord</span>
-<span class="sd">            Order of the norm. Default is 2.</span>
+<span class="sd">            Order of the norm. Default is &quot;fro&quot;.</span>
 <span class="sd">        keepdims</span>
 <span class="sd">            If this is set to True, the axes which are normed over are left in the</span>
 <span class="sd">            result as dimensions with size one. With this option the result will</span>
@@ -1041,6 +1063,17 @@
 <span class="sd">        -------</span>
 <span class="sd">        ret</span>
 <span class="sd">            Matrix norm of the array at specified axes.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1.1, 2.2], [1., 2.]]), \</span>
+<span class="sd">                              b=ivy.array([[1., 2.], [3., 4.]]))</span>
+<span class="sd">        &gt;&gt;&gt; y = x.matrix_norm(ord=1)</span>
+<span class="sd">        &gt;&gt;&gt; print(y)</span>
+<span class="sd">        {</span>
+<span class="sd">            a: ivy.array(4.2),</span>
+<span class="sd">            b: ivy.array(6.)</span>
+<span class="sd">        }</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">static_matrix_norm</span><span class="p">(</span>
