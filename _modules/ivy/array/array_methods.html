@@ -3778,18 +3778,19 @@
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[5,4],</span>
-<span class="sd">                   [11, 2]],</span>
-<span class="sd">                  [[3, 5],</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[5,4],\</span>
+<span class="sd">                   [11, 2]],\</span>
+<span class="sd">                  [[3, 5],\</span>
 <span class="sd">                   [9, 7]]])</span>
+
 <span class="sd">    &gt;&gt;&gt; y = x.einops_reduce(&#39;a b c -&gt; b c&#39;, &#39;max&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array([[ 5,  5],</span>
 <span class="sd">               [11,  7]])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[5, 4, 3],</span>
-<span class="sd">                    [11, 2, 9]],</span>
-<span class="sd">                   [[3, 5, 7],</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[[5, 4, 3],\</span>
+<span class="sd">                    [11, 2, 9]],\</span>
+<span class="sd">                   [[3, 5, 7],\</span>
 <span class="sd">                    [9, 7, 1]]])</span>
 <span class="sd">    &gt;&gt;&gt; y = x.einops_reduce(&#39;a b c -&gt; a () c&#39;, &#39;min&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
@@ -3834,18 +3835,13 @@
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([5,4])</span>
 <span class="sd">    &gt;&gt;&gt; y = x.einops_repeat(&#39;a -&gt; a c&#39;, c=3)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array([[5, 4],</span>
-<span class="sd">               [5, 4],</span>
-<span class="sd">              [5, 4]])</span>
+<span class="sd">    ivy.array([[5,5,5],[4,4,4]])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[5,4],</span>
-<span class="sd">                [2, 3]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[5,4],\</span>
+<span class="sd">                [2, 3]])\</span>
 <span class="sd">    &gt;&gt;&gt; y = x.einops_repeat(&#39;a b -&gt;  a b c&#39;, c=3)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array([[[5, 5, 5],</span>
-<span class="sd">                [4, 4, 4]],</span>
-<span class="sd">               [[2, 2, 2],</span>
-<span class="sd">                [3, 3, 3]]])</span>
+<span class="sd">    ivy.array([[5,5,5],[4,4,4]])</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
@@ -3919,7 +3915,7 @@
 <span class="sd">    With `ivy.Array` input and backend set as &quot;tensorflow&quot;:</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([1., 4.2, 2.2])</span>
-<span class="sd">    &gt;&gt;&gt; ret = x.supports_inplace()</span>
+<span class="sd">    &gt;&gt;&gt; ret = x.supports_inplace_updates()</span>
 <span class="sd">    &gt;&gt;&gt; print(ret)</span>
 <span class="sd">    False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -5005,49 +5001,9 @@
     <span class="n">weight</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
-    <span class="n">bias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">bias</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ivy.Array instance method variant of ivy.linear. This method simply</span>
-<span class="sd">    wraps the function, and so the docstring for ivy.linear also applies</span>
-<span class="sd">    to this method with minimal changes.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    self</span>
-<span class="sd">        The input array to compute linear transformation on.</span>
-<span class="sd">        *[outer_batch_shape,inner_batch_shape,in_features]*</span>
-<span class="sd">    weight</span>
-<span class="sd">        The weight matrix. *[outer_batch_shape,out_features,in_features]*</span>
-<span class="sd">    bias</span>
-<span class="sd">        The bias vector, default is None. *[outer_batch_shape,out_features]*</span>
-<span class="sd">    out</span>
-<span class="sd">        optional output array, for writing the result to. It must have a shape</span>
-<span class="sd">        that the inputs broadcast to.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    ret</span>
-<span class="sd">        Result array of the linear transformation.</span>
-<span class="sd">        *[outer_batch_shape,inner_batch_shape,out_features]*</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1.1, 2.2, 3.3], \</span>
-<span class="sd">                       [4.4, 5.5, 6.6], \</span>
-<span class="sd">                       [7.7, 8.8, 9.9]])</span>
-<span class="sd">    &gt;&gt;&gt; w = ivy.array([[1., 2., 3.], \</span>
-<span class="sd">                       [4., 5., 6.], \</span>
-<span class="sd">                       [7., 8., 9.]])</span>
-<span class="sd">    &gt;&gt;&gt; b = ivy.array([1., 0., -1.])</span>
-<span class="sd">    &gt;&gt;&gt; y = x.linear(w, bias=b)</span>
-<span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array([[ 16.4,  35.2,  54. ],</span>
-<span class="sd">               [ 36.2,  84.7, 133. ],</span>
-<span class="sd">               [ 56. , 134. , 212. ]])</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
 
@@ -7082,7 +7038,7 @@
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([0., 1., 2. , 1. , 0.])</span>
 <span class="sd">    &gt;&gt;&gt; y = x.unique_counts()</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    uc(values=ivy.array([0.,1.,2.]),counts=ivy.array([2,2,1]))</span>
+<span class="sd">    Results(values=ivy.array([0.,1.,2.]),counts=ivy.array([2,2,1]))</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">unique_counts</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span></div>
 
@@ -7128,7 +7084,7 @@
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([0.3,0.4,0.7,0.4,0.2,0.8,0.5])</span>
 <span class="sd">    &gt;&gt;&gt; y = x.unique_inverse()</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    unique_inverse(values=ivy.array([0.2, 0.3, 0.4, 0.5, 0.7, 0.8]),</span>
+<span class="sd">    Results(values=ivy.array([0.2, 0.3, 0.4, 0.5, 0.7, 0.8]),</span>
 <span class="sd">    inverse_indices=ivy.array([1, 2, 4, 2, 0, 5, 3]))</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -7611,9 +7567,9 @@
 <span class="sd">    &gt;&gt;&gt; y = ivy.zeros((3, 2), dtype=&quot;int32&quot;)</span>
 <span class="sd">    &gt;&gt;&gt; x.cumprod(axis=1, exclusive=True, out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array([[1, 2],</span>
-<span class="sd">               [1, 5],</span>
-<span class="sd">               [1, 11]])</span>
+<span class="sd">    ivy.array([[0, 0],</span>
+<span class="sd">               [0, 0],</span>
+<span class="sd">               [0, 0]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span></div>
 
