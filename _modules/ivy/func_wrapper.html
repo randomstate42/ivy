@@ -554,6 +554,7 @@
             <span class="k">if</span> <span class="p">(</span>
                 <span class="nb">isinstance</span><span class="p">(</span><span class="n">linalg_v</span><span class="p">,</span> <span class="n">FunctionType</span><span class="p">)</span>
                 <span class="ow">and</span> <span class="n">linalg_k</span> <span class="o">!=</span> <span class="s2">&quot;namedtuple&quot;</span>
+                <span class="ow">and</span> <span class="n">linalg_k</span> <span class="o">!=</span> <span class="s2">&quot;check_type&quot;</span>
                 <span class="ow">and</span> <span class="ow">not</span> <span class="n">linalg_k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">)</span>
             <span class="p">):</span>
                 <span class="n">to_wrap</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">linalg_k</span><span class="p">]</span> <span class="o">=</span> <span class="n">_wrap_function</span><span class="p">(</span>
