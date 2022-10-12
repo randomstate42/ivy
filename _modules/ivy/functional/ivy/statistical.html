@@ -138,7 +138,6 @@
     <span class="n">to_native_arrays_and_back</span><span class="p">,</span>
     <span class="n">handle_out_argument</span><span class="p">,</span>
     <span class="n">handle_nestable</span><span class="p">,</span>
-    <span class="n">integer_arrays_to_float</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="kn">from</span> <span class="nn">ivy.exceptions</span> <span class="kn">import</span> <span class="n">handle_exceptions</span>
 
@@ -352,8 +351,8 @@
 <span class="sd">        b: ivy.array(5.)</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, 2, 3]),</span>
-<span class="sd">    ...                   b=ivy.array([2, 3, 4]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([1, 2, 3]),\</span>
+<span class="sd">                          b=ivy.array([2, 3, 4]))</span>
 <span class="sd">    &gt;&gt;&gt; z = x.max()</span>
 <span class="sd">    &gt;&gt;&gt; print(z)</span>
 <span class="sd">    {</span>
@@ -364,8 +363,7 @@
     <span class="k">return</span> <span class="n">current_backend</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="n">keepdims</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="mean"><a class="viewcode-back" href="../../../../functional/ivy/statistical/mean/mean_functional.html#ivy.functional.ivy.statistical.mean">[docs]</a><span class="nd">integer_arrays_to_float</span>
-<span class="nd">to_native_arrays_and_back</span>
+<div class="viewcode-block" id="mean"><a class="viewcode-back" href="../../../../functional/ivy/statistical/mean/mean_functional.html#ivy.functional.ivy.statistical.mean">[docs]</a><span class="nd">to_native_arrays_and_back</span>
 <span class="nd">handle_out_argument</span>
 <span class="nd">handle_nestable</span>
 <span class="nd">handle_exceptions</span>
@@ -427,7 +425,7 @@
 <span class="sd">    simplicity, but this function is *nestable*, and therefore also accepts</span>
 <span class="sd">    :class:`ivy.Container` instances in place of any of the arguments.</span>
 
-
+<span class="sd">    </span>
 <span class="sd">    Functional Examples</span>
 <span class="sd">    -------------------</span>
 <span class="sd">    With :class:`ivy.Array` input:</span>
@@ -464,9 +462,9 @@
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.native_array([[0., 1., 2.], [3., 4., 5.]])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.native_array([0., 0.])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.mean(x, axis=1)</span>
+<span class="sd">    &gt;&gt;&gt; ivy.mean(x, axis=1, out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
-<span class="sd">    ivy.array([1., 4.])</span>
+<span class="sd">    [1., 4.]</span>
 
 <span class="sd">    With :class:`ivy.Container` input:</span>
 
@@ -478,8 +476,8 @@
 <span class="sd">        b: ivy.array(0.90000004)</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0., 1., 2.], [3., 4., 5.]]),</span>
-<span class="sd">    ...                   b=ivy.array([[3., 4., 5.], [6., 7., 8.]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0., 1., 2.], [3., 4., 5.]]), \</span>
+<span class="sd">                          b=ivy.array([[3., 4., 5.], [6., 7., 8.]]))</span>
 <span class="sd">    &gt;&gt;&gt; ivy.mean(x, axis=0, out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    {</span>
@@ -522,12 +520,12 @@
 <span class="sd">    &gt;&gt;&gt; x.mean(out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    {</span>
-<span class="sd">        a: ivy.array(1.),</span>
-<span class="sd">        b: ivy.array(0.)</span>
+<span class="sd">        a: ivy.array(0.),</span>
+<span class="sd">        b: ivy.array(1.)</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1., 1., 1.], [2., 2., 2.]]),</span>
-<span class="sd">    ...                   b=ivy.array([[3., 3., 3.], [4., 4., 4.]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1., 1., 1.], [2., 2., 2.]]), \</span>
+<span class="sd">                          b=ivy.array([[3., 3., 3.], [4., 4., 4.]]))</span>
 <span class="sd">    &gt;&gt;&gt; x.mean(axis=1, out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    {</span>
@@ -931,8 +929,8 @@
 
 <span class="sd">    With :class:`ivy.Container` input:</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([0.1, 0.2, 0.9]),</span>
-<span class="sd">    ...                   b=ivy.array([0.7, 0.1, 0.9]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([0.1, 0.2, 0.9]), \</span>
+<span class="sd">                          b=ivy.array([0.7, 0.1, 0.9]))</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.var(x)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
@@ -1069,24 +1067,24 @@
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array([0, 1, 6, 8])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[6, 4, 2],</span>
-<span class="sd">    ...                [1, 3, 0]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[6, 4, 2], \</span>
+<span class="sd">                       [1, 3, 0]])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.zeros((2,3))</span>
 <span class="sd">    &gt;&gt;&gt; ivy.cumsum(x, axis=0, exclusive=False, reverse=True, out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array([[7, 7, 2],</span>
 <span class="sd">               [1, 3, 0]])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 5, 2],</span>
-<span class="sd">    ...                [4, 3, 0]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[1, 5, 2], \</span>
+<span class="sd">                       [4, 3, 0]])</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.cumsum(x, axis=0, exclusive=True, reverse=True)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    ivy.array([[4, 3, 0],</span>
 <span class="sd">               [0, 0, 0]])</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.array([[2, 4, 5],</span>
-<span class="sd">    ...                [3, 6, 5],</span>
-<span class="sd">    ...                [1, 3, 10]])</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.array([[2, 4, 5], \</span>
+<span class="sd">                       [3, 6, 5], \</span>
+<span class="sd">                       [1, 3, 10]])</span>
 <span class="sd">    &gt;&gt;&gt; ivy.cumsum(x,axis=1,reverse=True, dtype=&#39;int64&#39;, out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    ivy.array([[11,  9,  5],</span>
@@ -1095,8 +1093,8 @@
 
 <span class="sd">    With :class:`ivy.Container` input:</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1, 3, 5]]),</span>
-<span class="sd">    ...                   b=ivy.array([[3, 5, 7]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1, 3, 5]]), \</span>
+<span class="sd">                          b=ivy.array([[3, 5, 7]]))</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.cumsum(x, axis= 0)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
@@ -1104,15 +1102,15 @@
 <span class="sd">        b: ivy.array([[3, 5, 7]])</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1, 3, 4]]),</span>
-<span class="sd">    ...                   b=ivy.array([[3, 5, 8],</span>
-<span class="sd">    ...                                [5, 6, 5]]),</span>
-<span class="sd">    ...                   c=ivy.array([[2, 4, 1],</span>
-<span class="sd">    ...                                [3, 6, 9],</span>
-<span class="sd">    ...                                [0, 2, 3]]))</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a = ivy.zeros((1, 3)),</span>
-<span class="sd">    ...                   b = ivy.zeros((2, 3)),</span>
-<span class="sd">    ...                   c = ivy.zeros((3,3)))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[1, 3, 4]]), \</span>
+<span class="sd">                          b=ivy.array([[3, 5, 8], \</span>
+<span class="sd">                                       [5, 6, 5]]), \</span>
+<span class="sd">                          c=ivy.array([[2, 4, 1], \</span>
+<span class="sd">                                       [3, 6, 9], \</span>
+<span class="sd">                                       [0, 2, 3]]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a = ivy.zeros((1, 3)), \</span>
+<span class="sd">                          b = ivy.zeros((2, 3)), \</span>
+<span class="sd">                          c = ivy.zeros((3,3)))</span>
 <span class="sd">    &gt;&gt;&gt; ivy.cumsum(x,axis=1,reverse=True, out=y)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
@@ -1124,13 +1122,13 @@
 <span class="sd">                      [5, 5, 3]])</span>
 <span class="sd">    }</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0],</span>
-<span class="sd">    ...                                [5]]),</span>
-<span class="sd">    ...                   b=ivy.array([[6, 8, 7],</span>
-<span class="sd">    ...                                [4, 2, 3]]),</span>
-<span class="sd">    ...                   c=ivy.array([[1, 2],</span>
-<span class="sd">    ...                                [3, 4],</span>
-<span class="sd">    ...                                [6, 4]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0], \</span>
+<span class="sd">                                       [5]]), \</span>
+<span class="sd">                          b=ivy.array([[6, 8, 7], \</span>
+<span class="sd">                                       [4, 2, 3]]), \</span>
+<span class="sd">                          c=ivy.array([[1, 2], \</span>
+<span class="sd">                                       [3, 4], \</span>
+<span class="sd">                                       [6, 4]]))</span>
 <span class="sd">    &gt;&gt;&gt; ivy.cumsum(x,axis=0,out=x)</span>
 <span class="sd">    &gt;&gt;&gt; print(x)</span>
 <span class="sd">    {</span>
@@ -1334,19 +1332,19 @@
 <span class="sd">    ivy.array([ 9, 12, 15])</span>
 
 <span class="sd">    &gt;&gt;&gt; A = ivy.array([0, 1, 2])</span>
-<span class="sd">    &gt;&gt;&gt; B = ivy.array([[ 0,  1,  2,  3],</span>
-<span class="sd">    ...                [ 4,  5,  6,  7],</span>
-<span class="sd">    ...                [ 8,  9, 10, 11]])</span>
+<span class="sd">    &gt;&gt;&gt; B = ivy.array([[ 0,  1,  2,  3],\</span>
+<span class="sd">                       [ 4,  5,  6,  7],\</span>
+<span class="sd">                       [ 8,  9, 10, 11]])</span>
 <span class="sd">    &gt;&gt;&gt; C = ivy.einsum(&#39;i,ij-&gt;i&#39;, A, B)</span>
 <span class="sd">    &gt;&gt;&gt; print(C)</span>
 <span class="sd">    ivy.array([ 0, 22, 76])</span>
 
-<span class="sd">    &gt;&gt;&gt; A = ivy.array([[1, 1, 1],</span>
-<span class="sd">    ...                [2, 2, 2],</span>
-<span class="sd">    ...                [5, 5, 5]])</span>
-<span class="sd">    &gt;&gt;&gt; B = ivy.array([[0, 1, 0],</span>
-<span class="sd">    ...                [1, 1, 0],</span>
-<span class="sd">    ...                [1, 1, 1]])</span>
+<span class="sd">    &gt;&gt;&gt; A = ivy.array([[1, 1, 1],\</span>
+<span class="sd">                       [2, 2, 2],\</span>
+<span class="sd">                       [5, 5, 5]])</span>
+<span class="sd">    &gt;&gt;&gt; B = ivy.array([[0, 1, 0],\</span>
+<span class="sd">                       [1, 1, 0],\</span>
+<span class="sd">                       [1, 1, 1]])</span>
 <span class="sd">    &gt;&gt;&gt; C = ivy.einsum(&#39;ij,jk-&gt;ik&#39;, A, B)</span>
 <span class="sd">    &gt;&gt;&gt; print(C)</span>
 <span class="sd">    ivy.array([[ 2,  3,  1],</span>
@@ -1396,9 +1394,9 @@
 <span class="sd">    With a mix of :class:`ivy.Array` and :class:`ivy.NativeArray` inputs:</span>
 
 <span class="sd">    &gt;&gt;&gt; A = ivy.array([0, 1, 2])</span>
-<span class="sd">    &gt;&gt;&gt; B = ivy.native_array([[ 0, 1, 2, 3],</span>
-<span class="sd">    ...                       [ 4, 5, 6, 7],</span>
-<span class="sd">    ...                       [ 8, 9, 10, 11]])</span>
+<span class="sd">    &gt;&gt;&gt; B = ivy.native_array([[ 0, 1, 2, 3],\</span>
+<span class="sd">                              [ 4, 5, 6, 7],\</span>
+<span class="sd">                              [ 8, 9, 10, 11]])</span>
 <span class="sd">    &gt;&gt;&gt; C = ivy.einsum(&#39;i,ij-&gt;i&#39;, A, B)</span>
 <span class="sd">    &gt;&gt;&gt; print(C)</span>
 <span class="sd">    ivy.array([ 0, 22, 76])</span>
@@ -1406,12 +1404,12 @@
 <span class="sd">    With a mix of :class:`ivy.Array` and :class:`ivy.Container` inputs:</span>
 
 <span class="sd">    &gt;&gt;&gt; x = ivy.array([0, 1, 2])</span>
-<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([[ 0,  1,  2,  3],</span>
-<span class="sd">    ...                                [ 4,  5,  6,  7],</span>
-<span class="sd">    ...                                [ 8,  9, 10, 11]]),</span>
-<span class="sd">    ...                   b=ivy.array([[ 0,  1,  2],</span>
-<span class="sd">    ...                                [ 4,  5,  6],</span>
-<span class="sd">    ...                                [ 8,  9, 10]]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.Container(a=ivy.array([[ 0,  1,  2,  3],\</span>
+<span class="sd">                                       [ 4,  5,  6,  7],\</span>
+<span class="sd">                                       [ 8,  9, 10, 11]]),\</span>
+<span class="sd">                          b=ivy.array([[ 0,  1,  2],\</span>
+<span class="sd">                                       [ 4,  5,  6],\</span>
+<span class="sd">                                       [ 8,  9, 10]]))</span>
 <span class="sd">    &gt;&gt;&gt; z = ivy.einsum(&#39;i,ij-&gt;i&#39;, x, y)</span>
 <span class="sd">    &gt;&gt;&gt; print(z)</span>
 <span class="sd">    {</span>
@@ -1421,8 +1419,8 @@
 
 <span class="sd">    With :class:`ivy.Container` input:</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0, 1, 0],[1, 1, 0],[1, 1, 1]]),</span>
-<span class="sd">    ...                   b=ivy.array([[0, 1, 2],[4, 5, 6],[8, 9, 10]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0, 1, 0],[1, 1, 0],[1, 1, 1]]),\</span>
+<span class="sd">                          b=ivy.array([[0, 1, 2],[4, 5, 6],[8, 9, 10]]))</span>
 <span class="sd">    &gt;&gt;&gt; y = ivy.einsum(&#39;ii&#39;, x)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
@@ -1442,8 +1440,8 @@
 
 <span class="sd">    Using :class:`ivy.Container` instance method:</span>
 
-<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0, 1, 0],[1, 1, 0],[1, 1, 1]]),</span>
-<span class="sd">    ...                   b=ivy.array([[0, 1, 2],[4, 5, 6],[8, 9, 10]]))</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([[0, 1, 0],[1, 1, 0],[1, 1, 1]]),\</span>
+<span class="sd">                          b=ivy.array([[0, 1, 2],[4, 5, 6],[8, 9, 10]]))</span>
 <span class="sd">    &gt;&gt;&gt; y = x.einsum(&#39;ii&#39;)</span>
 <span class="sd">    &gt;&gt;&gt; print(y)</span>
 <span class="sd">    {</span>
