@@ -111,14 +111,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Framework Classes</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/converters.html">Converters</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/sequential.html">Sequential</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/activations.html">Activations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/module.html">Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/optimizers.html">Optimizers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/norms.html">Norms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../stateful/layers.html">Layers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../stateful/initializers.html">Initializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/module.html">Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/sequential.html">Sequential</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/optimizers.html">Optimizers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/activations.html">Activations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../stateful/norms.html">Norms</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul>
@@ -346,7 +346,8 @@ ivy.inv also applies to this method with minimal changes.</p>
 <dd><p>ivy.Array instance method variant of ivy.matrix_norm.
 This method simply wraps the function, and so the docstring for
 ivy.matrix_norm also applies to this method with minimal changes.
-:param x: Input array having shape (…, M, N) and whose innermost two dimensions</p>
+:type self: <code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>
+:param self: Input array having shape (…, M, N) and whose innermost two dimensions</p>
 <blockquote>
 <div><p>form MxN matrices. Should have a floating-point data type.</p>
 </div></blockquote>
@@ -374,6 +375,13 @@ that the inputs broadcast to.</p></li>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">matrix_norm</span><span class="p">(</span><span class="nb">ord</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 <span class="go">ivy.array(6.3)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">ivy</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">matrix_norm</span><span class="p">(</span><span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;nuc&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">ivy.array([[[ 4.24]],</span>
+<span class="go">        [[11.4 ]]])</span>
 </pre></div>
 </div>
 </dd></dl>
